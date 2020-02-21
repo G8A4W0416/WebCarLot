@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import model.ListItem;
 
 public class ListItemHelper {
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ConsoleCarLot");
+	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebCarLot");
 	
 	public void insertItem(ListItem li) {
 		EntityManager em = emfactory.createEntityManager();
