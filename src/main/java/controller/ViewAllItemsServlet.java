@@ -28,9 +28,12 @@ public class ViewAllItemsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ListItemHelper dao = new ListItemHelper();
 		request.setAttribute("allItems", dao.showAllItems());
+		DateOfLastOilChangeHelper oilChangeDateHelper = new DateOfLastOilChangeHelper();
+		request.setAttribute("allOilChanges", oilChangeDateHelper.showAllOilChanges());
 		String path = "/car-list.jsp";
-		if(dao.showAllItems().isEmpty()){
-			path = "/index.html";
+		
+		if(dao.showAllItems().isEmpty()){ 
+			path = "/index.html"; 
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);

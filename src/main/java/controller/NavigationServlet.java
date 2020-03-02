@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DateOfLastOilChange;
 import model.ListItem;
 
 /**
@@ -40,6 +41,7 @@ public class NavigationServlet extends HttpServlet {
 		doGet(request, response);
 		
 		ListItemHelper dao = new ListItemHelper();
+		DateOfLastOilChangeHelper oilChangeDateHelper = new DateOfLastOilChangeHelper();
 		String act = request.getParameter("doThisToItem");
 		// after all changes, we should redirect to the viewAllItems servlet
 		// The only time we don't is if they select to add a new item or edit
@@ -58,6 +60,10 @@ public class NavigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				ListItem itemToEdit = dao.searchForItemById(tempId);
 				request.setAttribute("itemToEdit", itemToEdit);
+				DateOfLastOilChange oilChangeDateToEdit = oilChangeDateHelper.searchForItemById(tempId);
+				if (oilChangeDateToEdit != null) {
+					request.setAttribute("oilChangeDateToEdit", oilChangeDateToEdit);
+				}
 				path = "/edit-item.jsp";
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to select an item");

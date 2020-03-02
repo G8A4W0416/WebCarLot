@@ -22,7 +22,7 @@ public class ListItemHelper {
 	
 	public List<ListItem> showAllItems() {
 		EntityManager em = emfactory.createEntityManager();
-		List<ListItem> allItems = em.createQuery("SELECT i FROM ListItem i").getResultList();
+		List<ListItem> allItems = em.createQuery("select i from ListItem i").getResultList();
 		return allItems;
 	}
 	

@@ -1,11 +1,6 @@
 //final annotated ListItem POJO
 package model;
 
-/* All these import statements came in by clicking the red X 
- * and using the Import option from the javax.persistence package.
- * If you are asked to create a class, interface, constant, etc, you 
- * made a spelling or capitalization error!!
- */
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="items")
+@Table(name="CAR_INFO")
 public class ListItem {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -69,7 +64,7 @@ public class ListItem {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
+
 	public String returnItemDetails() {
 		return year + " " + make + " " + model;
 	}

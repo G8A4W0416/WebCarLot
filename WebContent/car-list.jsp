@@ -32,7 +32,21 @@
 <td>${currentitem.model}</td>
 <td>${currentitem.year}</td>
 </tr>
+	<c:set var = "carID" value = "${currentitem.id}" />
+	<c:forEach items="${requestScope.allOilChanges}" var="currentdate">
+		<c:set var = "dateID" value = "${currentdate.id}" />
+		<c:if test = "${carID == dateID}">
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="3">
+				Last Oil Change Date:	
+				${currentdate.serviceDate.getMonthValue()}/${currentdate.serviceDate.getDayOfMonth()}/${currentdate.serviceDate.getYear()}
+			</td>
+		</tr>
+		</c:if>
+	</c:forEach>
 </c:forEach>
+
 </table>
 </fieldset>
 <input class="btn" type="submit" value="edit" name="doThisToItem" />
